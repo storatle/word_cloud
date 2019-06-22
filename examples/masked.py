@@ -15,6 +15,13 @@ from wordcloud import WordCloud, STOPWORDS
 
 d = path.dirname(__file__)
 
+
+f = open(path.join(d, 'stoppord.txt'))
+
+stop = f.readlines()
+
+
+
 # Read the whole text.
 text = open(path.join(d, 'alice.txt')).read()
 
@@ -24,7 +31,14 @@ text = open(path.join(d, 'alice.txt')).read()
 alice_mask = np.array(Image.open(path.join(d, "alice_mask.png")))
 
 stopwords = set(STOPWORDS)
-stopwords.add("said")
+for s in stop:
+    s=s.strip('\n')
+    # s = s.decode("utf-8")
+    #print(s)
+    stopwords.add(s)
+
+
+# stopwords.add("said")
 
 wc = WordCloud(background_color="white", max_words=2000, mask=alice_mask,
                stopwords=stopwords)
@@ -37,7 +51,7 @@ wc.to_file(path.join(d, "alice.png"))
 # show
 plt.imshow(wc, interpolation='bilinear')
 plt.axis("off")
-plt.figure()
-plt.imshow(alice_mask, cmap=plt.cm.gray, interpolation='bilinear')
+#plt.figure()
+#plt.imshow(alice_mask, cmap=plt.cm.gray, interpolation='bilinear')
 plt.axis("off")
 plt.show()
