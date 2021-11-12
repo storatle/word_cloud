@@ -20,8 +20,6 @@ f = open(path.join(d, 'stoppord.txt'))
 
 stop = f.readlines()
 
-
-
 # Read the whole text.
 text = open(path.join(d, 'alice.txt')).read()
 
@@ -36,7 +34,6 @@ for s in stop:
     # s = s.decode("utf-8")
     #print(s)
     stopwords.add(s)
-
 
 # stopwords.add("said")
 
