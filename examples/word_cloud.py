@@ -26,7 +26,7 @@ parser.add_argument('-bg', '--background', type=str, default='black',
 parser.add_argument('-w', '--maxword', type=int, default=1000,
                     help="Max word")
 
-parser.add_argument('-s', '--stopword', type=str, default='a',
+parser.add_argument('-s', '--stopword', nargs='+', default='a',
                     help="Stop words")
 
 
@@ -38,6 +38,7 @@ mask_file = args.mask
 bg = args.background
 max_word = args.maxword
 stop = args.stopword
+print(stop)
 
 
 
@@ -62,7 +63,9 @@ text = open(path.join(d, text_file)).read()
 
 # adding movie script specific stopwords
 stopwords = set(STOPWORDS)
-stopwords.add(stop)
+for i in stop:
+    print(i) 
+    stopwords.add(i)
 if mask_file:
     print(mask_file)
     mask = np.array(Image.open(path.join(d, mask_file)))
