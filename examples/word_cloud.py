@@ -26,11 +26,12 @@ parser.add_argument('-bg', '--background', type=str, default='black',
 parser.add_argument('-w', '--maxword', type=int, default=1000,
                     help="Max word")
 
-parser.add_argument('-s', '--stopword', nargs='+', default='a',
+parser.add_argument('-sw', '--stopword', nargs='+', default='a',
                     help="Stop words")
 
 
-
+parser.add_argument('-sf', '--stopfile', type=str, 
+                    help="File with stopword")
 
 args = parser.parse_args()
 text_file = args.txt
@@ -38,7 +39,13 @@ mask_file = args.mask
 bg = args.background
 max_word = args.maxword
 stop = args.stopword
+stop_file = args.stopfile
 print(stop)
+stops = []
+d = path.dirname(__file__)
+if stop_file:
+    stops = open(path.join(d, stop_file), encoding="utf8").readlines()
+ 
 
 
 
@@ -46,7 +53,6 @@ def grey_color_func(word, font_size, position, orientation, random_state=None,
                     **kwargs):
     return "hsl(0, 0%%, %d%%)" % random.randint(60, 100)
 
-d = path.dirname(__file__)
 
 # read the mask image
 # taken from
@@ -54,7 +60,7 @@ d = path.dirname(__file__)
 # movie script of "a new hope"
 # http://www.imsdb.com/scripts/Star-Wars-A-New-Hope.html
 # May the lawyers deem this fair use.
-text = open(path.join(d, text_file)).read()
+text = open(path.join(d, text_file), encoding="utf8").read()
 #text = open(path.join(d, 'a_new_hope.txt')).read()
 
 # preprocessing the text a little bit
@@ -63,6 +69,10 @@ text = open(path.join(d, text_file)).read()
 
 # adding movie script specific stopwords
 stopwords = set(STOPWORDS)
+for s in stops:
+    s=s.strip('\n')
+    stopwords.add(s)
+
 for i in stop:
     print(i) 
     stopwords.add(i)
@@ -74,7 +84,7 @@ if mask_file:
                random_state=1).generate(text)
 else:
     print('No mask')
-    wc = WordCloud(width=1400, height=800,background_color=bg, max_words=max_word, stopwords=stopwords, margin=10,
+    wc = WordCloud(width=2000, height=100,background_color=bg, max_words=max_word, stopwords=stopwords, margin=10,
                random_state=1).generate(text)
 
 # store default colored image
