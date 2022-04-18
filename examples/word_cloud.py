@@ -74,7 +74,7 @@ for s in stops:
     stopwords.add(s)
 
 for i in stop:
-    print(i) 
+    # print(i) 
     stopwords.add(i)
 if mask_file:
     print(mask_file)
@@ -84,7 +84,7 @@ if mask_file:
                random_state=1).generate(text)
 else:
     print('No mask')
-    wc = WordCloud(width=2000, height=100,background_color=bg, max_words=max_word, stopwords=stopwords, margin=10,
+    wc = WordCloud(width=2000, height=2100,background_color=bg, max_words=max_word, stopwords=stopwords, margin=10,
                random_state=1).generate(text)
 
 # store default colored image

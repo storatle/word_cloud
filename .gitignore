@@ -7,3 +7,5 @@ doc/auto_examples
 doc/generated
 .venv/
 .idea/
+*.png
+*.txt
