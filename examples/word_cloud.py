@@ -26,11 +26,11 @@ parser.add_argument('-bg', '--background', type=str, default='black',
 parser.add_argument('-w', '--maxword', type=int, default=1000,
                     help="Max word")
 
-parser.add_argument('-sw', '--stopword', nargs='+', default='a',
+parser.add_argument('-sw', '--stopword', nargs='+', default=' ',
                     help="Stop words")
 
 
-parser.add_argument('-sf', '--stopfile', type=str, 
+parser.add_argument('-sf', '--stopfile', type=str, default='stoppord.txt', 
                     help="File with stopword")
 
 args = parser.parse_args()
@@ -74,7 +74,7 @@ for s in stops:
     stopwords.add(s)
 
 for i in stop:
-    # print(i) 
+    print(i) 
     stopwords.add(i)
 if mask_file:
     print(mask_file)

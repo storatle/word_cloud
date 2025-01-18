@@ -1,11 +1,9 @@
-#!/usr/bin/env python
-"""
-Using custom colors
+"""Using custom colors
 ===================
 
 Using the recolor method and custom coloring functions.
 """
-
+#!/usr/bin/env python
 import numpy as np
 from PIL import Image
 from os import path
@@ -13,7 +11,12 @@ import matplotlib.pyplot as plt
 import random
 import argparse
 from wordcloud import WordCloud, STOPWORDS
-parser = argparse.ArgumentParser()
+
+parser = argparse.ArgumentParser(
+        description=__doc__,
+        formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+
 parser.add_argument('-t', '--txt', type=str, default='text.txt',
                     help="Name of text for reading")
 

@@ -1,3 +1,5 @@
+SINTEF
+SINTEFs
 den
 seg
 si
@@ -20,13 +22,17 @@ av
 begge
 bort
 ble
+bli
 bra
 bruke
+både
 da
 denne
 der
+derfor
 deres
 det
+dette
 din
 disse
 du
@@ -46,11 +52,15 @@ fra
 få
 før
 først
+gir
+gjennom
 gjorde
 gjøre
+gjør
 god
 gå
 ha
+har
 hadde
 han
 hans
@@ -108,6 +118,7 @@ sant
 si
 siden
 sist
+skal
 skulle
 slik
 slutt
@@ -130,6 +141,7 @@ vil
 ville
 vite
 vår
+våre
 være
 vært
 å

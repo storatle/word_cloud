@@ -78,7 +78,7 @@ for i in stop:
     stopwords.add(i)
 if mask_file:
     print(mask_file)
-    mask = np.array(Image.open(path.join(d, mask_file)))
+    mask = np.array(Image.open(path.join(mask_file)))
 #mask = np.array(Image.open(path.join(d, "stormtrooper_mask.png")))
     wc = WordCloud(background_color=bg, mask=mask, max_words=max_word, stopwords=stopwords, margin=10,
                random_state=1).generate(text)
@@ -91,7 +91,7 @@ else:
 default_colors = wc.to_array()
 wc.to_file(text_file.rsplit('.')[0]+'-1.png')
 
-plt.figure( figsize=(20,10),facecolor='k')
+plt.figure( figsize=(20,10),facecolor='w')
 plt.title("Custom colors")
 plt.imshow(wc.recolor(color_func=grey_color_func, random_state=3), interpolation="bilinear")
 wc.to_file(text_file.rsplit('.')[0]+'-2.png')
